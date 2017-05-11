@@ -9,7 +9,9 @@ pipeline {
     stage('Build') {
       steps {
         git(url: 'https://github.com/pppiermarini/DakotaAccess.git', branch: 'master')
-        sh 'echo add maven build'
+        sh '''echo add maven build
+pwd
+ls'''
       }
     }
     stage('Test') {
