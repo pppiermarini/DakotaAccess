@@ -40,6 +40,11 @@ ls'''
       steps {
         sh 'echo Deploy to staging'
       }
+	stage('UAT') {
+      steps {
+	    input 'Proceed?'
+        sh 'echo Deploy to UAT'
+      }
     }
   }
 }
