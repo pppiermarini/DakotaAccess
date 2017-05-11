@@ -20,7 +20,20 @@ ls'''
     }
     stage('Test') {
       steps {
-        sleep 5
+        parallel(
+          "Test": {
+            sleep 5
+            
+          },
+          "Chrome": {
+            sleep 10
+            
+          },
+          "Safari": {
+            sleep 12
+            
+          }
+        )
       }
     }
   }
