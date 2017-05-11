@@ -41,7 +41,7 @@ ls'''
         sh 'echo Deploy to staging'
       }
     }
-    stage('UAT') {
+    stage('Deploy') {
       steps {
         parallel(
           "UAT": {
@@ -50,10 +50,17 @@ ls'''
             
           },
           "QA": {
+		    input 'Proceed?'
             sh 'echo some code here'
             
           }
         )
+      }
+    }
+	stage('Production') {
+      steps {
+	  input 'Proceed?'
+        sh 'echo Deploy to staging'
       }
     }
   }
