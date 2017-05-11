@@ -40,11 +40,20 @@ ls'''
       steps {
         sh 'echo Deploy to staging'
       }
-	}
-	stage('UAT') {
+    }
+    stage('UAT') {
       steps {
-	    input 'Proceed?'
-        sh 'echo Deploy to UAT'
+        parallel(
+          "UAT": {
+            input 'Proceed?'
+            sh 'echo Deploy to UAT'
+            
+          },
+          "QA": {
+            sh 'echo some code here'
+            
+          }
+        )
       }
     }
   }
