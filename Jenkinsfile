@@ -36,5 +36,10 @@ ls'''
         )
       }
     }
+    stage('Stage') {
+      steps {
+        sh 'echo Deploy to staging'
+      }
+    }
   }
 }
