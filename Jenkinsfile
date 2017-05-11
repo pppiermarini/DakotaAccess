@@ -12,6 +12,10 @@ pipeline {
         sh '''echo add maven build
 pwd
 ls'''
+        dir(path: 'desktop-console-java-master') {
+          sh 'mvn clean package'
+        }
+        
       }
     }
     stage('Test') {
